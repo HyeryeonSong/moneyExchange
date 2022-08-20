@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Money Exchange App</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>Money Change</h1>
+  <div class="wrapper">
+    <div class="dropdown">
+      <button id="from-btn" class="dropbtn">USD</button>
+      <div id="from-currency" class="dropdown-content">
+        <a href="#">USD</a>
+        <a href="#">KRW</a>
+        <a href="#">VND</a>
+      </div>
+    </div>
+    <div class="inputbox">
+      <input type="number" class="from-input" onkeyup="convert()" />
+      <div class="input-value"><span></span>달러</div>
+    </div>
+    <div>=</div>
+    <div class="dropdown">
+      <button id="to-btn" class="dropbtn">KRW</button>
+      <div id="to-currency" class="dropdown-content">
+        <a href="#">USD</a>
+        <a href="#">KRW</a>
+        <a href="#">VND</a>
+      </div>
+    </div>
+    <div class="inputbox">
+      <input type="number" class="to-input" onkeyup="convert()" />
+      <div class="input-value"><span></span>원</div>
+    </div>
+  </div>
+  
+
+  <script src="./main.js"></script>
+</body>
+</html>
