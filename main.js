@@ -29,6 +29,7 @@ let currencyRatio = {
   }
 }
 
+// 기본값
 let fromCurrency = "USD";
 let toCurrency = "KRW";
 
@@ -39,7 +40,8 @@ document.querySelectorAll('#from-currency a').forEach(menu => menu.addEventListe
   document.getElementById('from-btn').textContent = this.textContent;
   // 3. 선택한 currency 값을 변수에 저장
   fromCurrency = this.textContent;
-
+  document.querySelector('.from-unit').textContent = currencyRatio[this.textContent].unit;
+  convert()
 }))
 
 
@@ -47,6 +49,8 @@ document.querySelectorAll('#from-currency a').forEach(menu => menu.addEventListe
 document.querySelectorAll('#to-currency a').forEach(menu => menu.addEventListener("click", function(){
   document.getElementById('to-btn').textContent = this.textContent;
   toCurrency = this.textContent;
+  document.querySelector('.to-unit').textContent = currencyRatio[this.textContent].unit;
+  convert()
 }))
 
 
@@ -55,11 +59,19 @@ function convert(){
   // 1. 환전
   // 얼마 환전 ? 가지고 있는돈(from Currency) 
   // 돈 * 환율 = 환전금액
+
+  // 환전할 돈 입력값
   let amount = document.querySelector('.from-input').value;
-  document.querySelector('.input-value span').innerHTML = amount;
-
+  document.querySelector('.from-value').innerHTML = amount;
   let exchange = amount * currencyRatio[fromCurrency][toCurrency];
-  console.log(exchange);
 
+  // 환전결과
+  let reverse = document.querySelector('.to-input').value;
+  let exchanged = reverse * currencyRatio[toCurrency][fromCurrency];
+  
   document.querySelector('.to-input').value = exchange;
+  document.querySelector('.to-value').innerHTML = exchange;
 }
+
+// 1. 드롭다운 리스트 클릭해서 값이 바낄 때 
+// 2. 새로 환전
